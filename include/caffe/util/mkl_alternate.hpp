@@ -11,7 +11,8 @@
 #include <Accelerate/Accelerate.h>
 #else
 extern "C" {
-#include <cblas.h>
+#include <mkl_cblas.h>
+//#include <cblas.h>
 }
 #endif  // USE_ACCELERATE
 

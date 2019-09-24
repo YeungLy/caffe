@@ -44,7 +44,8 @@ string(REPLACE ";" ":"  rpath_folders   "${folders}")
 
 if(build_using MATCHES "Matlab")
   set(libflags -lcaffe${Caffe_POSTFIX} ${libflags}) # Matlab R2014a complans for -Wl,--whole-archive
-
+  message("caffe include dir=${Caffe_INCLUDE_DIR}")
+  set(cflags ${cflags} -I${Caffe_INCLUDE_DIR} -I/usr/local/cuda/include)
   caffe_fetch_and_set_proper_mexext(Matlab_caffe_mex)
   add_custom_command(OUTPUT ${Matlab_caffe_mex} COMMAND ${Matlab_mex}
       ARGS -output ${Matlab_caffe_mex} ${Matlab_srcs} ${cflags} ${link_folders} ${libflags}
